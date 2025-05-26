@@ -23,7 +23,7 @@ erc20/
 
 ## 🛠️ Tools & Frameworks
 
-- Solidity ^0.8.0
+- Solidity ^0.8.26
 - Foundry (Forge)
 - forge-std (for testing utilities)
 
