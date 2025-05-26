@@ -8,7 +8,6 @@ contract MedChainScript is Script {
     function run() external {
         vm.startBroadcast();
 
-
         vm.stopBroadcast();
     }
 }

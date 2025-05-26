@@ -7,15 +7,14 @@ contract Medchain {
     uint8 public decimals;
     uint256 public totalSupply;
 
-
-    mapping(address => uint256) public balanceOf;  
+    mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
     //first line keeps track of each address's balance
     //second line tracks how much one account can spend from another's balance
 
-    event Transfer(address indexed from, address indexed to, uint256 amount); 
+    event Transfer(address indexed from, address indexed to, uint256 amount);
     event Approval(address indexed owner, address indexed spender, uint256 amount);
-    //first line Logs a transfer between accounts 
+    //first line Logs a transfer between accounts
     //second line Logs when an account gives another permission to spend tokens
 
     constructor(string memory _name, string memory _symbol, uint8 _decimals, uint256 _initialSupply) {
@@ -24,7 +23,7 @@ contract Medchain {
         decimals = _decimals;
         totalSupply = _initialSupply;
         balanceOf[msg.sender] = totalSupply;
-    }   //Called once on deployment; sets total supply and assigns all tokens to the deployer
+    } //Called once on deployment; sets total supply and assigns all tokens to the deployer
 
     function transfer(address _to, uint256 _amount) public returns (bool) {
         require(balanceOf[msg.sender] >= _amount, "Insufficient balance");
@@ -61,6 +60,7 @@ contract Medchain {
         emit Transfer(address(0), msg.sender, _amount);
         return true;
     } //Allows the contract owner to mint new tokens, increasing total supply and the owner's balance
+
     function burn(uint256 _amount) public returns (bool) {
         require(balanceOf[msg.sender] >= _amount, "Insufficient balance to burn");
         balanceOf[msg.sender] -= _amount;
